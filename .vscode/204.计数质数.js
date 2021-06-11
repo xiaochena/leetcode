@@ -5,23 +5,28 @@
  */
 
 // @lc code=start
+/** 方法一：枚举
+ *
+ */
 /**
  * @param {number} n
  * @return {number}
  */
-var countPrimes = function (n) {
-  let arr = new Array(n);
-  let result = 0;
-  for (let i = 2; i < n; i++) {
-    
-    if (!arr[i]) {
-      result++;
-      for (let j = i + i; j < n; j += i) {
-        arr[j] = true;
-      }
+const isPrime = (x) => {
+  for (let i = 2; i * i <= x; ++i) {
+    if (x % i == 0) {
+      return false;
     }
   }
-  return result;
+  return true;
+};
+
+var countPrimes = function (n) {
+  let ans = 0;
+  for (let i = 2; i < n; ++i) {
+    ans += isPrime(i);
+  }
+  return ans;
 };
 // @lc code=end
 
