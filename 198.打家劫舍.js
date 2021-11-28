@@ -3,7 +3,7 @@
  *
  * [198] 打家劫舍
  */
-
+// [2,1,3,7,2,5]
 // @lc code=start
 /**
  * @param {number[]} nums
