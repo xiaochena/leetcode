@@ -27,18 +27,22 @@ var solution = function (isBadVersion) {
   return function (n) {
     let left = 1;
     let right = n;
-    while (left < right) {
+    while (left <= right) {
       const mid = left + ((right - left) >> 1);
       if (isBadVersion(mid)) {
-        right = mid;
+        right = mid - 1;
       } else {
         left = mid + 1;
       }
     }
-    return right;
+    return left;
   };
 };
 // @lc code=end
+
+// @after-stub-for-debug-begin
+module.exports = solution;
+// @after-stub-for-debug-end
 
 // @after-stub-for-debug-begin
 module.exports = solution;
