@@ -10,21 +10,27 @@
  * @return {number[]}
  */
 var sortedSquares = function (nums) {
+  let result = Array(nums.length);
   let left = 0;
   let right = nums.length - 1;
-  let result = Array(nums.length);
   let index = nums.length - 1;
+
   while (left <= right) {
-    if (nums[left] ** 2 < nums[right] ** 2) {
-      result[index] = nums[right] ** 2;
-      right--;
-      index--;
-    } else {
-      result[index] = nums[left] ** 2;
+    let leftAbs = nums[left] ** 2;
+    let rightAbs = nums[right] ** 2;
+    if (leftAbs > rightAbs) {
+      result[index] = leftAbs;
       left++;
-      index--;
+    } else {
+      result[index] = rightAbs;
+      right--;
     }
+    index--;
   }
   return result;
 };
 // @lc code=end
+
+// @after-stub-for-debug-begin
+module.exports = sortedSquares;
+// @after-stub-for-debug-end
