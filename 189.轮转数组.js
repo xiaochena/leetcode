@@ -4,7 +4,6 @@
  * [189] 轮转数组
  */
 
-const gcd = (x, y) => (y ? gcd(y, x % y) : x);
 // @lc code=start
 /**
  * @param {number[]} nums
@@ -12,7 +11,17 @@ const gcd = (x, y) => (y ? gcd(y, x % y) : x);
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 var rotate = function (nums, k) {
-  let temp;
+  const { length } = nums;
+  const newArr = new Array(length);
+  let index = 0;
+
+  for (; index < length; index++) {
+    newArr[(index + k) % length] = nums[index];
+  }
+
+  for (let i = 0; i < length; ++i) {
+    nums[i] = newArr[i];
+  }
 };
 // @lc code=end
 
