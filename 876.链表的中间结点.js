@@ -17,17 +17,13 @@
  * @return {ListNode}
  */
 var middleNode = function (head) {
-  let one = head;
-  let two = head;
-
-  while (two.next && two.next.next) {
-    one = one.next;
-    two = two.next.next;
+  let p1 = head;
+  let p2 = head;
+  while (p2 && p2.next) {
+    p1 = p1.next;
+    p2 = p2.next.next;
   }
-  if (two.next) {
-    one = one.next;
-  }
-  return one;
+  return p1;
 };
 // @lc code=end
 
