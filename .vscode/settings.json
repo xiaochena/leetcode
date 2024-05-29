@@ -1,3 +1,9 @@
 {
-  "cSpell.words": ["leetcode"]
+  "cSpell.words": ["leetcode"],
+  "leetcode-problem-rating.filePath": {
+    "default": {
+      "folder": "",
+      "filename": "${id}.${cn_name}.${ext}"
+    }
+  }
 }
