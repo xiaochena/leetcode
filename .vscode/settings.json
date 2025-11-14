@@ -5,5 +5,13 @@
       "folder": "",
       "filename": "${id}.${cn_name}.${ext}"
     }
-  }
+  },
+  // 禁用 Cursor AI 自动补全，保留原生 TypeScript/JavaScript 提示
+  "editor.inlineSuggest.enabled": false,
+  "cursor.cpp.disabledLanguages": ["javascript", "typescript"],
+  // 确保原生语言服务正常工作
+  "typescript.suggest.enabled": true,
+  "javascript.suggest.enabled": true,
+  "typescript.suggest.autoImports": true,
+  "javascript.suggest.autoImports": true
 }
