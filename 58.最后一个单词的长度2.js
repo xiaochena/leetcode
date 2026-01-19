@@ -17,11 +17,11 @@ var lengthOfLastWord = function (s) {
   let point = s.length - 1;
   let length = 0;
 
-  while (s[point] === " ") {
+  while (s[point] === ' ') {
     point -= 1;
   }
 
-  while (point >= 0 && s[point] !== " ") {
+  while (point >= 0 && s[point] !== ' ') {
     length += 1;
     point -= 1;
   }
