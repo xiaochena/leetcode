@@ -1,8 +1,8 @@
 /*
- * @lc app=leetcode.cn id=206 lang=javascript
+ * @lc app=leetcode.cn id=234 lang=javascript
  * @lcpr version=30204
  *
- * [206] 反转链表
+ * [234] 回文链表
  */
 
 // @lcpr-template-start
@@ -24,29 +24,37 @@
  */
 
 /**
- * 三指针法（迭代）
- * 核心思路: 使用三个指针（prev、curr、next），逐个将当前节点的 next 指向前一个节点，然后三个指针同步前移，直到遍历完整个链表。
+ * 将值复制到数组中后用双指针法
+ * 复杂度：时间O(n)，O(n)
  * @param {ListNode} head
- * @return {ListNode}
+ * @return {boolean}
  */
-var reverseList = function (head) {
-  let previous = null;
-  let current = head;
+var isPalindrome = function (head) {
+  const vals = [];
 
-  while (current) {
-    let next = current.next;
-    current.next = previous;
-    previous = current;
-    current = next;
+  while (head) {
+    vals.push(head);
+    head = head.next;
   }
 
-  return previous;
+  let left = 0;
+  let right = vals.length - 1;
+
+  while (left <= right) {
+    if (vals[left].val !== vals[right].val) {
+      return false;
+    }
+    left += 1;
+    right -= 1;
+  }
+
+  return true;
 };
 // @lc code=end
 
 /*
 // @lcpr case=start
-// [1,2,3,4,5]\n
+// [1,2,2,1]\n
 // @lcpr case=end
 
 // @lcpr case=start
@@ -54,7 +62,11 @@ var reverseList = function (head) {
 // @lcpr case=end
 
 // @lcpr case=start
-// []\n
+// [1,2]\n
 // @lcpr case=end
 
  */
+
+// @lcpr-after-debug-begin
+module.exports = isPalindrome;
+// @lcpr-after-debug-end
