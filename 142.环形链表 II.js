@@ -24,28 +24,25 @@
  */
 
 /**
+ * 哈希集合法
+ * 核心思路: 用哈希集合记录已访问的节点，遍历链表时第一个重复出现的节点就是环的入口。
+ * 时间复杂度: O(n)，空间复杂度: O(n)
  * @param {ListNode} head
  * @return {ListNode}
  */
 var detectCycle = function (head) {
-  let fast = head;
-  let slow = head;
+  let p = head;
+  let set = new Set();
 
-  while (fast && fast.next) {
-    fast = fast.next.next;
-    slow = slow.next;
-
-    if (fast === slow) {
-      let pointer = head;
-      while (pointer !== slow) {
-        pointer = pointer.next;
-        slow = slow.next;
-      }
-      return pointer;
+  while (p) {
+    if (set.has(p)) {
+      return true;
     }
+    set.add(p);
+    p = p.next;
   }
 
-  return null;
+  return false;
 };
 // @lc code=end
 

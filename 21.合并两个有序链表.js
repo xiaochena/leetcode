@@ -13,6 +13,9 @@ function ListNode(val, next) {
 
  */
 /**
+ * 双指针迭代法（哑节点）
+ * 核心思路: 使用哑节点作为结果链表的起点，双指针分别遍历两个链表，每次选择较小值节点接入结果链表，最后连接剩余部分。
+ * 时间复杂度: O(m + n)，空间复杂度: O(1)
  * @param {ListNode} list1
  * @param {ListNode} list2
  * @return {ListNode}

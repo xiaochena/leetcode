@@ -61,7 +61,9 @@ function reverseList(head) {
 }
 
 /**
- *
+ * 快慢指针 + 反转后半部分
+ * 核心思路: 用快慢指针找到链表中点，反转后半部分链表，然后双指针从头和反转后的中点同时遍历比较，判断是否回文。
+ * 时间复杂度: O(n)，空间复杂度: O(1)
  * @param {ListNode} head
  * @return {boolean}
  */

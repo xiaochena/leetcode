@@ -4,6 +4,9 @@
  * [2] 两数相加
  */
 
+// @lcpr-template-start
+
+// @lcpr-template-end
 // @lc code=start
 /**
  * Definition for singly-linked list.
@@ -17,37 +20,55 @@ function ListNode(val, next) {
   this.next = next === undefined ? null : next;
 }
 /**
+ * 模拟加法（带进位）
+ * 核心思路: 同时遍历两个链表，逐位相加并处理进位，构建新链表存储结果，最后处理可能的最高位进位。
+ * 时间复杂度: O(max(m, n))，空间复杂度: O(max(m, n))
  * @param {ListNode} l1
  * @param {ListNode} l2
  * @return {ListNode}
  */
 var addTwoNumbers = function (l1, l2) {
-  let result = new ListNode();
-  let resultPointerL1 = result; // 结果的指针
-  let pointerL1 = l1;
-  let pointerL2 = l2;
-  let carry = 0; // 进位
-  do {
-    let sum =
-      (pointerL1 ? pointerL1.val : 0) + (pointerL2 ? pointerL2.val : 0) + carry;
-    resultPointerL1.val = sum % 10;
-    carry = sum >= 10 ? 1 : 0;
-    if (pointerL1 || pointerL2) {
-      if (pointerL1?.next || pointerL2?.next) {
-        resultPointerL1.next = new ListNode();
-        resultPointerL1 = resultPointerL1.next;
-      }
-      pointerL1 = pointerL1 ? pointerL1.next : null;
-      pointerL2 = pointerL2 ? pointerL2.next : null;
+  const ansList = new ListNode();
+  let pAns = ansList;
+  let p1 = l1;
+  let p2 = l2;
+  // 进位
+  let carry = 0;
+
+  while (p1 || p2) {
+    // 两数相加
+    let sum = (p1?.val || 0) + (p2?.val || 0) + carry;
+    carry = 0;
+    // 如果和大于0则
+    if (sum >= 10) {
+      carry = 1;
+      sum = sum % 10;
     }
-  } while (pointerL1 || pointerL2);
+    pAns.val = sum;
+
+    p1 = p1?.next || null;
+    p2 = p2?.next || null;
+
+    if (p1 || p2) {
+      pAns.next = new ListNode();
+      pAns = pAns.next;
+    }
+  }
   if (carry > 0) {
-    resultPointerL1.next = new ListNode(1);
+    pAns.next = new ListNode(1);
   }
 
-  return result;
+  return ansList;
 };
 // @lc code=end
+
+/*
+
+// @lcpr case=start
+// [9,9,9,9,9,9,9]\n[9,9,9,9]\n
+// @lcpr case=end
+
+ */
 
 // @after-stub-for-debug-begin
 module.exports = addTwoNumbers;
